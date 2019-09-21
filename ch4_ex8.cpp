@@ -10,7 +10,7 @@ int main() {
     int summ = 0;
     int seeds = 1;
     
-    for (int i = 1; i < 64; ++i) {
+    for (int i = 1; i < 65; ++i) {
         cout << i << ' ' << seeds << ' ' << summ << endl;
         summ += seeds;
         seeds *= 2;
