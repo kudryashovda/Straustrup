@@ -17,12 +17,10 @@ int main() {
         scores.push_back(score);
     }
 
-    for (int i = 0; i < names.size(); ++i) {
-        int counts = 0;
+    for (int i = 0; i < names.size(); ++i)
         for (int k = 0; k < names.size(); ++k)
             if (names[i] == names[k] and i > k) 
                 cout << "Name: " << names[i] << " has been entered earlier\n";
-    }
     
     cout << endl;
     
