@@ -11,9 +11,9 @@ struct s {
     double med;
 };
 
-s foo(vector<int>&);
+s foo(const vector<int>&);
 
-s foo(vector<int>& v) {
+s foo(const vector<int>& v) {
     s st;
     st.min = v.front();
     st.max = v.front();
