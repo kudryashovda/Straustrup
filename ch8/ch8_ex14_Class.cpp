@@ -1,11 +1,12 @@
 #include <iostream>
 #include <vector>
+#include <algorithm> // min max
 
 using namespace std;
 
 class Stat {
 public:
-    Stat(vector<string>& vs) : v(vs) {};
+    Stat(vector<string>& vs);
     void print();
     string getLongestString();
     string getShortestString();
@@ -13,30 +14,29 @@ public:
     string getLatestAlfabeticString();
 private:
     const vector<string>& v;
+    vector<int> s; // vector of string sizes
 };
 
+Stat::Stat(vector<string>& vs) : v(vs) {
+    for(auto it: v) s.push_back(it.size() ); // ones on create
+} 
+
 void Stat::print() {
-    for(auto it:v) cout << it << endl;
+    for(auto it: v) cout << it << endl;
 }
 
 string Stat::getLongestString() {
-    string sl = "";
-    long unsigned int maxs = v.front().size();
-    
-    for(auto it: v)
-        if (it.size() > maxs) { maxs = it.size(); sl = it; }
+    auto it = max_element( s.begin(), s.end() );
+    int i = distance(s.begin(), it);
 
-    return sl;
+    return v[i];
 }
 
 string Stat::getShortestString() {
-    string ss = "";
-    long unsigned int mins = v.front().size();
-    
-    for(auto it: v)
-        if (it.size() < mins) { mins = it.size(); ss = it; }
+    auto it = min_element( s.begin(), s.end() );
+    int i = distance(s.begin(), it);
 
-    return ss;
+    return v[i];
 }
 
 string Stat::getPrimAlfabeticString() {
